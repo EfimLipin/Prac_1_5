@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.prac_1_5.ui.theme.Prac_1_5Theme
 
 class MainActivity : ComponentActivity() {
@@ -18,17 +19,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Prac_1_5Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                    Hello("Efim!")
             }
         }
     }
-}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -38,6 +32,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Composable
+fun Hello(name: String?) {
+    Text(
+        text = name?.let { "Привет $it!" } ?: "Имя не задано",
+        modifier = Modifier.padding(top = 12.dp),
+    )
+}
 
 @Preview(showBackground = true)
 @Composable
