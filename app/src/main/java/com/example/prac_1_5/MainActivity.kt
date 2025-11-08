@@ -1,5 +1,6 @@
 package com.example.prac_1_5
 
+//import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import android.view.Surface
 import androidx.activity.ComponentActivity
@@ -7,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,20 +22,81 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.prac_1_5.ui.theme.Prac_1_5Theme
+import androidx.compose.ui.text.font.FontStyle
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-                    HelloPreview_Round()
+                    //HelloPreview_Round()
+                    DescriptionVariants_Preview()
             }
         }
     }
 
+@Composable
+fun DescriptionVariants() {
+    val text = stringResource(id = R.string.jetpack_compose_description)
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Text(
+            text = text,
+            color = Color(0xFF2E7D32),
+            fontSize = 16.sp,
+            fontStyle = FontStyle.Italic,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+        )
+
+
+        Text(
+            text = text,
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+        )
+
+        Text(
+            text = text,
+            fontSize = 24.sp,
+            color = Color.Black,
+            textDecoration = TextDecoration.Underline,
+            modifier = Modifier
+                .padding(start = 48.dp)
+                .background(Color(0xFF2E7D32))
+                .padding(8.dp)
+        )
+    }
+}
+
+@Preview(showSystemUi = true, name = "Description variants")
+@Composable
+fun DescriptionVariants_Preview() {
+    Surface(color = MaterialTheme.colorScheme.background) {
+        DescriptionVariants()
+    }
+}
+
+/*
 
 @Composable
 fun Hello(name: String?) {
@@ -100,4 +163,4 @@ fun HelloPreview_Round() {
     ) {
         Hello("Efim")
     }
-}
+}*/
