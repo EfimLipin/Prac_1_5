@@ -6,13 +6,18 @@ import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -38,12 +43,40 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
                     //HelloPreview_Round()
-                    DescriptionVariants_Preview()
+                    //DescriptionVariants_Preview()
+                    WideRoundedButton()
             }
         }
     }
 
 @Composable
+fun WideRoundedButton(
+    onClick: () -> Unit = {}
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(2.dp, Color.Gray),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.LightGray,
+            contentColor = Color.Black
+        ),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
+    ) {
+        Text(text = "Нажми на меня")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun WideRoundedButtonPreview() {
+    WideRoundedButton()
+}
+
+/*@Composable
 fun DescriptionVariants() {
     val text = stringResource(id = R.string.jetpack_compose_description)
 
@@ -94,7 +127,7 @@ fun DescriptionVariants_Preview() {
     Surface(color = MaterialTheme.colorScheme.background) {
         DescriptionVariants()
     }
-}
+}*/
 
 /*
 
