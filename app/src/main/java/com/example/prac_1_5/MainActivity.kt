@@ -44,7 +44,8 @@ class MainActivity : ComponentActivity() {
         setContent {
                     //HelloPreview_Round()
                     //DescriptionVariants_Preview()
-                    WideRoundedButton()
+                    //WideRoundedButton()
+                    InitialsInContainerPreview()
             }
         }
     }
